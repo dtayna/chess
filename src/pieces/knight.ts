@@ -9,6 +9,8 @@ export class Knight extends Piece {
 
     canMove( newPosition : { row: number, col: number } , board : Board ) : boolean {
         if ( !board ) return false;
+        if ( board.grid[newPosition.row]?.[newPosition.col]?.color === this.color ) return false;
+        
         return this.isBigColMove(newPosition) || this.isShortColMove(newPosition);
     }
 
