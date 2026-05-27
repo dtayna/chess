@@ -29,10 +29,7 @@ function setUpBoard() : void {
     board.grid[7]![6] = new Knight( "black", { row: 7, col: 6 } );
 }
 
-async function init() : Promise<void> {
-    setUpBoard();
-    board.showBoard();
-
+async function play() : Promise<void> {
     let piece = null;
 
     while (!piece) {
@@ -66,6 +63,14 @@ async function init() : Promise<void> {
 
     piece?.move( target!, board );
     board.showBoard();
+}
+
+async function init() {
+    setUpBoard();
+    board.showBoard();
+    while (true) {
+        await play();
+    }
     
 }
 
