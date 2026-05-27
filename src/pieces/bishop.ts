@@ -8,11 +8,10 @@ export class Bishop extends Piece {
     }
 
     canMove( newPosition : { row: number, col: number } , board : Board ) : boolean {
-        if (!board) return false;
-        if (board.grid[newPosition.row]?.[newPosition.col]?.color === this.color) return false;
+        if ( !this.canMoveGeneral(newPosition, board) ) return false;
 
         if (this.isDiagonalMove(newPosition)) {
-            
+
             let row = newPosition.row > this.position.row 
                 ? this.position.row + 1
                 : this.position.row - 1;

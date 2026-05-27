@@ -11,18 +11,12 @@ export class Pawn extends Piece {
     }
 
     canMove( newPosition : { row: number, col: number } , board : Board ) : boolean {
-        if ( !board ) return false;
-        const target = board.grid[newPosition.row]?.[newPosition.col];
+        if ( !this.canMoveGeneral(newPosition, board) ) return false;
 
-        if (this.isDiagonalMove(newPosition)) {
-            const isAPieceInTheWay = target !== null && target!.color !== this.color;
-            return isAPieceInTheWay;
-
-        } else if (this.isFirstBigMove(newPosition) || this.isNormalMove(newPosition)) {
-            return target?.color === this.color || target === null;
-
-        }
-        return false;
+        const isAPieceInTheWay = board.grid[newPosition.row]?.[newPosition.col] !== null
+        return ( this.isDiagonalMove(newPosition) && isAPieceInTheWay )
+            || ( this.isFirstBigMove(newPosition) && !isAPieceInTheWay )
+            || ( this.isNormalMove(newPosition) && !isAPieceInTheWay )
     }
 
     move( newPosition : { row: number, col: number} , board : Board) : void {
