@@ -8,9 +8,9 @@ export class Board {
     }
 
     showBoard() : void {
-        let board = '';
+        let board = '    a  b  c  d  e  f  g  h \n';
         for ( let i = 0; i < 8; i++) {
-            let row = '';
+            let row = `${i}  `;
             for ( let j = 0; j < 8; j++) {
                 if ( this.grid[i]![j] == null) {
                     row += '[ ]'
