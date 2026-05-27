@@ -25,6 +25,11 @@ export class Pawn extends Piece {
         return false;
     }
 
+    move( newPosition : { row: number, col: number} , board : Board) : void {
+        super.move(newPosition, board);
+        this.firstMove = false;
+    }
+
     show() : string {
         return this.color === 'white' ? '♙' : '♟';
     }

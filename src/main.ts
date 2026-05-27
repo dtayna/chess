@@ -2,6 +2,7 @@ import { Board } from "./board";
 import { Pawn } from "./pieces/pawn";
 import { Knight } from "./pieces/knight";
 import { Rook } from "./pieces/rook";
+import { Bishop } from "./pieces/bishop";
 import * as readline from "readline/promises";
 import { Piece } from "./pieces/piece";
 import { stdin as input, stdout as output } from "process";
@@ -27,6 +28,11 @@ function setUpBoard() : void {
     board.grid[0]![6] = new Knight( "white", { row: 0, col: 6 } );
     board.grid[7]![1] = new Knight( "black", { row: 7, col: 1 } );
     board.grid[7]![6] = new Knight( "black", { row: 7, col: 6 } );
+
+    board.grid[0]![2] = new Bishop( "white", { row: 0, col: 2 } );
+    board.grid[0]![5] = new Bishop( "white", { row: 0, col: 5 } );
+    board.grid[7]![2] = new Bishop( "black", { row: 7, col: 2 } );
+    board.grid[7]![5] = new Bishop( "black", { row: 7, col: 5 } );
 }
 
 async function play() : Promise<void> {
